@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import User from "../models/User-model.js";
 
 const home = async (req, res) => {
@@ -28,4 +29,29 @@ const register = async (req, res) => {
   }
 };
 
-export { home, register };
+const login = async function (req, res) {
+  try {
+    const { email, password } = req.body;
+    const existingUser = await User.findOne({ email });
+    if (!existingUser) {
+      return res.status(400).json({ message: "Invalid Credential" });
+    }
+    console.log(existingUser);
+
+    const isMatch = await bcrypt.compare(password, existingUser.password);
+
+    if (isMatch) {
+      res.status(200).json({
+        message: "Login Successfull",
+        token: await existingUser.generateToken(),
+        userId: existingUser._id.toString(),
+      });
+    } else {
+      res.status(401).json("Invalid email or password");
+    }
+  } catch (error) {
+    res.status(500).json("Internal server Error");
+  }
+};
+
+export { home, register, login };
