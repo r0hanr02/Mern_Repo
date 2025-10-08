@@ -7,6 +7,7 @@ const home = async (req, res) => {
     res.status(200).send(`message : ${req.body}`);
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
@@ -25,7 +26,7 @@ const register = async (req, res) => {
       userId: userCreated._id.toString(),
     });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
@@ -38,10 +39,9 @@ const login = async function (req, res) {
     }
     console.log(existingUser);
 
-    // const isMatch = 
+    // const isMatch =
 
     const isMatch = await existingUser.comparePassword(password);
-
 
     if (isMatch) {
       res.status(200).json({
@@ -53,7 +53,7 @@ const login = async function (req, res) {
       res.status(401).json("Invalid email or password");
     }
   } catch (error) {
-    res.status(500).json("Internal server Error");
+    next(error);
   }
 };
 

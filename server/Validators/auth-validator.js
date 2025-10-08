@@ -26,4 +26,7 @@ const signUpSchema = z.object({
     .max(1024, { message: "Password must not be more than 1024 characters" }),
 });
 
+const loginSchema = z.object({
+  
+})
 export default signUpSchema;
