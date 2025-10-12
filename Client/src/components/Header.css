@@ -1,0 +1,128 @@
+/* General Reset/Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Makes padding and border included in element's total width/height */
+}
+
+a {
+  text-decoration: none; /* Removes the default underline from links */
+  color: inherit; /* Inherits text color from the parent */
+}
+
+ul {
+  list-style: none; /* Removes bullet points from the list */
+}
+
+/* --- Header Styling --- */
+
+header {
+  width: 100%;
+  padding: 0 4rem; /* Padding on the left and right */
+  background-color: #212121; /* Dark background for a sleek look */
+  color: #ffffff; /* White text */
+  height: 5rem; /* Fixed height for the header */
+  display: flex; /* Enables flexbox for content alignment */
+  justify-content: space-between; /* Puts logo on one side, nav on the other */
+  align-items: center; /* Vertically centers the content */
+  position: sticky; /* Makes the header stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensures the header is above other content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* This container is inside the header, but since you are using a flex-based header,
+   you might not strictly need the 'container' div you have, but we'll style it anyway
+   to be safe, though the header itself is mostly doing the 'container' job here. */
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* --- Logo Styling (Rohan R.) --- */
+
+.logobrand a {
+  font-size: 1.8rem;
+  font-weight: 700; /* Bold */
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logobrand a:hover {
+  color: #4caf50; /* A primary color highlight on hover */
+}
+
+/* --- Navigation Styling --- */
+
+nav ul {
+  display: flex; /* Arranges the list items horizontally */
+  gap: 1.5rem; /* Space between each navigation item */
+  align-items: center;
+}
+
+nav ul li {
+  /* Optional: you can add specific styling to list items here if needed */
+}
+
+nav ul li a {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+nav ul li a:hover {
+  color: #4caf50; /* Primary color on hover */
+  /* background-color: rgba(255, 255, 255, 0.1); /* Optional: subtle background on hover */
+}
+
+/* React Router NavLink Active Class Styling */
+/* NavLink automatically adds the 'active' class when the route matches */
+.active {
+  color: #4caf50 !important; /* Forces the primary color for the active link */
+  font-weight: 700 !important; /* Makes the active link bold */
+}
+
+/* --- Media Queries for Responsiveness (Optional but recommended) --- */
+
+@media (max-width: 992px) {
+  header {
+    padding: 0 2rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* On smaller screens, you might stack them or hide the menu behind a burger icon.
+       For now, let's simplify the padding and font size to keep it visible. */
+  header {
+    height: auto;
+    flex-direction: column; /* Stack the logo and nav vertically */
+    padding: 1rem 1rem;
+  }
+
+  .container {
+    margin-bottom: 0.5rem; /* Space between logo and stacked navigation */
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav ul {
+    justify-content: center; /* Center the navigation links when stacked */
+    flex-wrap: wrap; /* Allow the links to wrap to the next line */
+    gap: 0.75rem 1rem; /* Adjust spacing */
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+}

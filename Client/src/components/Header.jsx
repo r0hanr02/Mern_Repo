@@ -6,9 +6,7 @@ const Header = () => {
     <>
       <header>
         <div className="container">
-          <div className="logobrand">
-            <a href="http://">Rohan R.</a>
-          </div>
+          <a href="/">Rohan R.</a>
         </div>
         <nav>
           <ul>

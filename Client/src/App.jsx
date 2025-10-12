@@ -11,7 +11,6 @@ import { Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <div>
-      Main Home Page
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
